@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="gu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>રમતો - Rhymeverse</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Gujarati:wght@400;500;600;700;800&family=Noto+Serif+Gujarati:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav class="navbar">
+  <div class="container">
+    <a href="index.html" class="logo">
+      <svg class="logo-icon" viewBox="0 0 40 40" fill="none">
+        <circle cx="20" cy="20" r="20" fill="url(#lg4)"/>
+        <text x="50%" y="56%" text-anchor="middle" dominant-baseline="middle" font-size="22" fill="white">♪</text>
+        <defs><linearGradient id="lg4" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
+          <stop stop-color="#87CEEB"/><stop offset="0.5" stop-color="#B39DDB"/><stop offset="1" stop-color="#F48FB1"/>
+        </linearGradient></defs>
+      </svg>
+      Rhymeverse
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">🏠 મુખ્ય પાનું</a></li>
+      <li><a href="rhymes.html">📖 બાળગીતો</a></li>
+      <li><a href="games.html" class="active">🎮 રમતો</a></li>
+      <li><a href="rhymes.html#learn">✏️ શીખો</a></li>
+      <li><a href="progress.html">🌟 મારી પ્રગતિ</a></li>
+    </ul>
+    <div class="nav-actions">
+      <div class="star-count">⭐ <span class="star-display-count">0</span></div>
+      <button class="nav-btn" id="btn-sound" title="ધ્વનિ">🔊</button>
+      <button class="nav-btn" id="btn-dark-mode" title="ડાર્ક મોડ">🌙</button>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobile-menu">
+  <div class="mobile-menu-panel">
+    <button class="mobile-menu-close" id="mobile-menu-close">✕</button>
+    <a href="index.html">🏠 મુખ્ય પાનું</a>
+    <a href="rhymes.html">📖 બાળગીતો</a>
+    <a href="games.html">🎮 રમતો</a>
+    <a href="rhymes.html#learn">✏️ શીખો</a>
+    <a href="progress.html">🌟 મારી પ્રગતિ</a>
+  </div>
+</div>
+
+<!-- PAGE HEADER -->
+<div class="page-header" style="background: linear-gradient(135deg, #B39DDB, #7E57C2, #F48FB1);">
+  <div class="container">
+    <div style="position:relative;z-index:2;">
+      <h1 style="font-size:2.5rem;">🎮 ગુજરાતી રમતો</h1>
+      <p>6 ઇન્ટ્રેક્ટિવ રમત - સ્કોર, તારા, બેજ!</p>
+    </div>
+    <!-- Floating game icons -->
+    <div style="position:absolute;top:20px;right:5%;font-size:32px;animation:float 3s ease-in-out infinite;">🎯</div>
+    <div style="position:absolute;top:40px;right:15%;font-size:24px;animation:float 3s ease-in-out infinite 1s;">🏆</div>
+    <div style="position:absolute;bottom:20px;right:8%;font-size:28px;animation:float 4s ease-in-out infinite 0.5s;">⭐</div>
+  </div>
+</div>
+
+<!-- SCORE SUMMARY -->
+<div class="game-hud-bar">
+  <div class="container">
+    <div class="game-hud-inner">
+      <div style="text-align:center;">
+        <div style="font-size:1.6rem;font-weight:900;color:var(--lavender);" id="total-games-played">0</div>
+        <div style="font-size:0.85rem;font-weight:700;color:var(--text-secondary);">રમત રમ્યા 🎮</div>
+      </div>
+      <div style="width:2px;height:40px;background:var(--border-color);"></div>
+      <div style="text-align:center;">
+        <div style="font-size:1.6rem;font-weight:900;color:var(--yellow);text-shadow:0 0 10px rgba(255,213,79,0.5);" id="total-stars-games">0 ⭐</div>
+        <div style="font-size:0.85rem;font-weight:700;color:var(--text-secondary);">કુલ તારા ⭐</div>
+      </div>
+      <div style="width:2px;height:40px;background:var(--border-color);"></div>
+      <div style="text-align:center;">
+        <div style="font-size:1.6rem;font-weight:900;color:var(--mint);" id="games-completed-count">0/6</div>
+        <div style="font-size:0.85rem;font-weight:700;color:var(--text-secondary);">પૂર્ણ 🏆</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- GAMES GRID -->
+<section style="background:var(--bg-secondary);padding:40px 0;">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">🎯 રમત પસંદ કરો</h2>
+      <p class="section-subtitle">6 અલગ-અલગ ઇન્ટ્રેક્ટિવ રમત</p>
+    </div>
+    <div class="cards-grid stagger" id="games-grid">
+      <!-- Filled by games.js -->
+    </div>
+  </div>
+</section>
+
+<!-- GAME AREA (hidden until a game is selected) -->
+<section style="background:var(--bg-secondary);padding:0 0 64px;" id="game-area-section">
+  <div class="container">
+    <div id="game-area" style="display:none;"></div>
+  </div>
+</section>
+
+<!-- HOW TO PLAY -->
+<section style="background:var(--bg-primary);padding:64px 0;">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">🕹️ કઈ રીતે રમવું</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:20px;max-width:700px;margin:0 auto;">
+      <div style="background:var(--bg-card);border-radius:var(--radius-lg);padding:20px;box-shadow:var(--shadow-sm);">
+        <div style="font-size:32px;margin-bottom:8px;">❤️</div>
+        <h4 style="color:var(--text-primary);margin-bottom:4px;">3 જીવ</h4>
+        <p style="color:var(--text-secondary);font-size:0.875rem;">ખોટો જવાબ = 1 ❤️ ઓછી</p>
+      </div>
+      <div style="background:var(--bg-card);border-radius:var(--radius-lg);padding:20px;box-shadow:var(--shadow-sm);">
+        <div style="font-size:32px;margin-bottom:8px;">⭐</div>
+        <h4 style="color:var(--text-primary);margin-bottom:4px;">સ્કોર</h4>
+        <p style="color:var(--text-secondary);font-size:0.875rem;">સ્કોર = ઝડ + સ્ટ</p>
+      </div>
+      <div style="background:var(--bg-card);border-radius:var(--radius-lg);padding:20px;box-shadow:var(--shadow-sm);">
+        <div style="font-size:32px;margin-bottom:8px;">🏆</div>
+        <h4 style="color:var(--text-primary);margin-bottom:4px;">બેજ</h4>
+        <p style="color:var(--text-secondary);font-size:0.875rem;">6 રમત = "રમત વીર" બેજ</p>
+      </div>
+      <div style="background:var(--bg-card);border-radius:var(--radius-lg);padding:20px;box-shadow:var(--shadow-sm);">
+        <div style="font-size:32px;margin-bottom:8px;">🔄</div>
+        <h4 style="color:var(--text-primary);margin-bottom:4px;">ફરી રમો</h4>
+        <p style="color:var(--text-secondary);font-size:0.875rem;">ગમે ત્યારે ફરી રમો!</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">♪ Rhymeverse</div>
+        <p class="footer-desc">ગુજરાતી ભાષા અને સંસ્કૃતિ શીખવા માટેનું મઝેદાર, રંગીન, ઇન્ટ્રેક્ટિવ શૈક્ષણિક મંચ.</p>
+      </div>
+      <div>
+        <div class="footer-heading">ઝડપી લિંક</div>
+        <ul class="footer-links">
+          <li><a href="index.html">🏠 મુખ્ય પાનું</a></li>
+          <li><a href="rhymes.html">📖 બાળગીતો</a></li>
+          <li><a href="games.html">🎮 રમતો</a></li>
+          <li><a href="progress.html">🌟 પ્રગતિ</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-heading">માહિતી</div>
+        <ul class="footer-links">
+          <li><a href="#">👨‍👩‍👧 અમારા વિશે</a></li>
+          <li><a href="#">👪 વાલીઓ માટે</a></li>
+          <li><a href="#">📧 સંપર્ક</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2024 Rhymeverse &mdash; ગુજરાતી શિક્ષણ | ♪ ગાઈએ, રમીએ, શીખીએ!
+    </div>
+  </div>
+</footer>
+
+<script src="js/data.js?v=2"></script>
+<script src="js/app.js?v=2"></script>
+<script src="js/components.js?v=2"></script>
+<script src="js/games.js?v=2"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Update stats display
+    const state = App.getState();
+    const completedGames = Object.keys(state.completedGames || {});
+
+    document.getElementById('total-games-played').textContent = completedGames.length;
+    document.getElementById('total-stars-games').textContent = state.stars + ' ⭐';
+    document.getElementById('games-completed-count').textContent = `${completedGames.length}/6`;
+  });
+</script>
+</body>
+</html>

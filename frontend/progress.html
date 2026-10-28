@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="gu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>મારી પ્રગતિ - Rhymeverse</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Gujarati:wght@400;500;600;700;800&family=Noto+Serif+Gujarati:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body id="progress-page">
+
+<!-- NAVIGATION -->
+<nav class="navbar">
+  <div class="container">
+    <a href="index.html" class="logo">
+      <svg class="logo-icon" viewBox="0 0 40 40" fill="none">
+        <circle cx="20" cy="20" r="20" fill="url(#lg5)"/>
+        <text x="50%" y="56%" text-anchor="middle" dominant-baseline="middle" font-size="22" fill="white">♪</text>
+        <defs><linearGradient id="lg5" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
+          <stop stop-color="#87CEEB"/><stop offset="0.5" stop-color="#B39DDB"/><stop offset="1" stop-color="#F48FB1"/>
+        </linearGradient></defs>
+      </svg>
+      Rhymeverse
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">🏠 મુખ્ય પાનું</a></li>
+      <li><a href="rhymes.html">📖 બાળગીતો</a></li>
+      <li><a href="games.html">🎮 રમતો</a></li>
+      <li><a href="rhymes.html#learn">✏️ શીખો</a></li>
+      <li><a href="progress.html" class="active">🌟 મારી પ્રગતિ</a></li>
+    </ul>
+    <div class="nav-actions">
+      <div class="star-count">⭐ <span class="star-display-count">0</span></div>
+      <button class="nav-btn" id="btn-sound" title="ધ્વનિ">🔊</button>
+      <button class="nav-btn" id="btn-dark-mode" title="ડાર્ક મોડ">🌙</button>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobile-menu">
+  <div class="mobile-menu-panel">
+    <button class="mobile-menu-close" id="mobile-menu-close">✕</button>
+    <a href="index.html">🏠 મુખ્ય પાનું</a>
+    <a href="rhymes.html">📖 બાળગીતો</a>
+    <a href="games.html">🎮 રમતો</a>
+    <a href="rhymes.html#learn">✏️ શીખો</a>
+    <a href="progress.html">🌟 મારી પ્રગતિ</a>
+  </div>
+</div>
+
+<!-- PAGE HEADER -->
+<div class="page-header" style="background: linear-gradient(135deg, #FFF176, #FFAB40, #FF8E53);">
+  <div class="container">
+    <h1 style="color:#4E342E;">🌟 મારી પ્રગતિ</h1>
+    <p style="color:#5D4037;">તમારું ભણતર, બેજ, સ્ટ્રીક - બધું એક સ્થળે!</p>
+  </div>
+</div>
+
+<!-- Wave transition -->
+<div style="background:var(--bg-primary);line-height:0;margin-top:-2px;">
+  <svg viewBox="0 0 1440 60" fill="none" preserveAspectRatio="none" style="width:100%;height:45px;display:block;">
+    <path d="M0,25 C360,60 720,5 1080,35 C1260,50 1380,20 1440,25 L1440,60 L0,60 Z" fill="var(--bg-secondary)"></path>
+  </svg>
+</div>
+
+<!-- CONTENT -->
+<section style="background:var(--bg-secondary);padding:40px 0 80px;">
+  <div class="container">
+
+    <!-- Stats Grid -->
+    <div class="progress-stats-grid" id="stats-grid" style="margin-bottom:40px;">
+      <!-- Filled by progress.js -->
+    </div>
+
+    <!-- Streak + Overview -->
+    <div style="display:grid;grid-template-columns:1fr 2fr;gap:24px;margin-bottom:48px;">
+      <div id="streak-display"><!-- Filled by progress.js --></div>
+      <div style="background:var(--bg-card);border-radius:var(--radius-xl);padding:28px;box-shadow:var(--shadow-md);">
+        <h3 style="color:var(--text-primary);margin-bottom:20px;">📊 એકંદર પ્રગતિ</h3>
+        <div style="display:flex;flex-direction:column;gap:16px;">
+          <div>
+            <div style="display:flex;justify-content:space-between;margin-bottom:6px;">
+              <span style="font-size:0.9rem;color:var(--text-secondary);">📖 જોડકણાં</span>
+              <span id="rhyme-pct" style="font-size:0.9rem;font-weight:700;color:var(--lavender);">0%</span>
+            </div>
+            <div class="progress-bar-wrap">
+              <div class="progress-bar-fill" id="rhyme-bar" style="width:0%;background:linear-gradient(90deg,#87CEEB,#B39DDB);"></div>
+            </div>
+          </div>
+          <div>
+            <div style="display:flex;justify-content:space-between;margin-bottom:6px;">
+              <span style="font-size:0.9rem;color:var(--text-secondary);">🎮 રમત</span>
+              <span id="game-pct" style="font-size:0.9rem;font-weight:700;color:var(--pink);">0%</span>
+            </div>
+            <div class="progress-bar-wrap">
+              <div class="progress-bar-fill" id="game-bar" style="width:0%;background:linear-gradient(90deg,#F48FB1,#EC407A);"></div>
+            </div>
+          </div>
+          <div>
+            <div style="display:flex;justify-content:space-between;margin-bottom:6px;">
+              <span style="font-size:0.9rem;color:var(--text-secondary);">🏆 બેજ</span>
+              <span id="badge-pct" style="font-size:0.9rem;font-weight:700;color:var(--orange);">0%</span>
+            </div>
+            <div class="progress-bar-wrap">
+              <div class="progress-bar-fill" id="badge-bar" style="width:0%;background:linear-gradient(90deg,#FFAB40,#FF5722);"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- BADGES SECTION -->
+    <div style="margin-bottom:48px;">
+      <div class="section-header" style="text-align:left;margin-bottom:20px;">
+        <h2 class="section-title" style="text-align:left;">🏆 બેજ</h2>
+      </div>
+      <div class="badge-grid" id="badges-grid">
+        <!-- Filled by progress.js -->
+      </div>
+    </div>
+
+    <!-- RHYME PROGRESS -->
+    <div style="margin-bottom:48px;">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;flex-wrap:wrap;gap:12px;">
+        <h2 style="color:var(--text-primary);font-size:1.5rem;font-weight:800;">📖 જોડકણું - પ્રગતિ</h2>
+        <a href="rhymes.html" class="btn btn-lavender btn-sm">📖 બધાં</a>
+      </div>
+      <div class="rhyme-progress-list" id="rhyme-progress-list">
+        <!-- Filled by progress.js -->
+      </div>
+    </div>
+
+    <!-- GAME PROGRESS -->
+    <div style="margin-bottom:48px;">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;flex-wrap:wrap;gap:12px;">
+        <h2 style="color:var(--text-primary);font-size:1.5rem;font-weight:800;">🎮 રમત - પ્રગતિ</h2>
+        <a href="games.html" class="btn btn-pink btn-sm">🎮 રમો</a>
+      </div>
+      <div class="rhyme-progress-list" id="game-progress-list">
+        <!-- Filled by progress.js -->
+      </div>
+    </div>
+
+    <!-- SETTINGS -->
+    <div style="background:var(--bg-card);border-radius:var(--radius-xl);padding:28px;box-shadow:var(--shadow-md);margin-bottom:32px;">
+      <h3 style="color:var(--text-primary);margin-bottom:20px;">⚙️ સેટિંગ</h3>
+      <div style="display:flex;flex-direction:column;gap:16px;">
+        <div style="display:flex;align-items:center;justify-content:space-between;">
+          <div>
+            <div style="font-weight:700;color:var(--text-primary);">🌙 ડાર્ક મોડ</div>
+            <div style="font-size:0.85rem;color:var(--text-secondary);">ઘેરો ટ theme</div>
+          </div>
+          <button class="btn btn-outline btn-sm" id="toggle-dark-btn" onclick="toggleDarkMode()">
+            🌙 ચાલુ/બંધ
+          </button>
+        </div>
+        <div style="display:flex;align-items:center;justify-content:space-between;">
+          <div>
+            <div style="font-weight:700;color:var(--text-primary);">🔊 ધ્વનિ</div>
+            <div style="font-size:0.85rem;color:var(--text-secondary);">ઑડિઓ ચાલુ/બંધ</div>
+          </div>
+          <button class="btn btn-outline btn-sm" id="toggle-sound-btn" onclick="toggleSound()">
+            🔊 ચાલુ/બંધ
+          </button>
+        </div>
+        <div style="display:flex;align-items:center;justify-content:space-between;">
+          <div>
+            <div style="font-weight:700;color:var(--text-primary);">📝 મોટો ટેક્સ્ટ</div>
+            <div style="font-size:0.85rem;color:var(--text-secondary);">ટેક્સ્ट સાઇઝ 120%</div>
+          </div>
+          <button class="btn btn-outline btn-sm" onclick="App.toggleLargeText()">
+            📝 ચ/બ
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- DANGER ZONE -->
+    <div style="background:rgba(239,154,154,0.1);border:2px solid rgba(239,83,80,0.2);border-radius:var(--radius-xl);padding:24px;">
+      <h4 style="color:#D32F2F;margin-bottom:8px;">⚠️ ધ્યાન</h4>
+      <p style="color:var(--text-secondary);font-size:0.9rem;margin-bottom:16px;">
+        નીચેનું બટન ક્લિક કરતાં <strong>બધી</strong> પ્રગ deleted.
+      </p>
+      <button class="btn btn-sm" style="background:#EF5350;color:#fff;" onclick="Progress.resetProgress()">
+        🗑️ બધી પ્રગتي ભૂंससो
+      </button>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">♪ Rhymeverse</div>
+        <p class="footer-desc">ગુજરાતી ભાષા અને સંસ્કૃતિ શીખવા માટેનું મજેદાર, રંગીન, ઇન્ટ્રેક્ટિવ શૈક્ષણિક મંચ.</p>
+      </div>
+      <div>
+        <div class="footer-heading">ઝડપી લિંક</div>
+        <ul class="footer-links">
+          <li><a href="index.html">🏠 મુખ્ય પાનું</a></li>
+          <li><a href="rhymes.html">📖 બાળગીતો</a></li>
+          <li><a href="games.html">🎮 રમતો</a></li>
+          <li><a href="progress.html">🌟 મારી પ્રગતિ</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-heading">માહિતી</div>
+        <ul class="footer-links">
+          <li><a href="#">👨‍👩‍👧 અમારા વિશે</a></li>
+          <li><a href="#">👪 વાલીઓ માટે</a></li>
+          <li><a href="#">📧 સંપર્ક</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2024 Rhymeverse &mdash; ગુજરાતી શિક્ષણ | ♪ ગાઈએ, રમીએ, શીખીએ!
+    </div>
+  </div>
+</footer>
+
+<script src="js/data.js?v=2"></script>
+<script src="js/app.js?v=2"></script>
+<script src="js/components.js?v=2"></script>
+<script src="js/progress.js?v=2"></script>
+<script>
+  function toggleDarkMode() {
+    const on = App.toggleDarkMode();
+    document.getElementById('toggle-dark-btn').textContent = on ? '☀️ ચ/બ' : '🌙 ચ/બ';
+  }
+
+  function toggleSound() {
+    const on = App.toggleSound();
+    document.getElementById('toggle-sound-btn').textContent = on ? '🔊 ચ/બ' : '🔇 ચ/બ';
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    // Update progress bars
+    const state = App.getState();
+    const totalRhymes = typeof RHYMES_DATA !== 'undefined' ? RHYMES_DATA.length : 8;
+
+    const rhymePct = Math.round((state.completedRhymes.length / totalRhymes) * 100);
+    const gamePct = Math.round((Object.keys(state.completedGames || {}).length / 6) * 100);
+    const badgePct = Math.round(((state.badges || []).length / (typeof BADGES_DATA !== 'undefined' ? BADGES_DATA.length : 5)) * 100);
+
+    document.getElementById('rhyme-bar').style.width = rhymePct + '%';
+    document.getElementById('game-bar').style.width = gamePct + '%';
+    document.getElementById('badge-bar').style.width = badgePct + '%';
+    document.getElementById('rhyme-pct').textContent = rhymePct + '%';
+    document.getElementById('game-pct').textContent = gamePct + '%';
+    document.getElementById('badge-pct').textContent = badgePct + '%';
+
+    // Settings button labels
+    const toggleDarkBtn = document.getElementById('toggle-dark-btn');
+    if (toggleDarkBtn) {
+      toggleDarkBtn.textContent = state.settings.darkMode ? '☀️ ચ/બ' : '🌙 ચ/બ';
+    }
+    const toggleSoundBtn = document.getElementById('toggle-sound-btn');
+    if (toggleSoundBtn) {
+      toggleSoundBtn.textContent = state.settings.sound ? '🔊 ચ/બ' : '🔇 ચ/બ';
+    }
+  });
+</script>
+</body>
+</html>

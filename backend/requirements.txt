@@ -1,0 +1,4 @@
+# RhymeVerse Backend Requirements
+# The streaming backend uses the Python standard library (http.server, socket, mimetypes).
+# No external pip packages are required to run the server.
+# Python 3.8+ recommended.

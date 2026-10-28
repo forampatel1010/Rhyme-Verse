@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="gu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>જોડકણી - Rhymeverse</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Gujarati:wght@400;500;600;700;800&family=Noto+Serif+Gujarati:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <style>
+    .rhyme-detail-hero {
+      padding: 48px 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .quiz-question {
+      background: var(--bg-card);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      margin-bottom: 24px;
+      border: 2px solid var(--border-color);
+      box-shadow: var(--shadow-sm);
+    }
+    .quiz-question h4 {
+      color: var(--text-primary);
+      margin-bottom: 18px;
+      font-size: var(--font-size-xl);
+      font-weight: 800;
+    }
+    .quiz-result {
+      text-align: center;
+      padding: 36px 24px;
+      background: var(--bg-card);
+      border-radius: var(--radius-xl);
+      border: 2.5px solid #FFD54F;
+      box-shadow: var(--shadow-md);
+    }
+    .tab-buttons {
+      display: flex;
+      gap: 8px;
+      background: var(--bg-card);
+      padding: 6px;
+      border-radius: var(--radius-full);
+      margin-bottom: 28px;
+      flex-wrap: wrap;
+      border: 2px solid var(--border-color);
+      box-shadow: var(--shadow-xs);
+    }
+    .tab-btn {
+      flex: 1;
+      padding: 12px 20px;
+      border-radius: var(--radius-full);
+      font-family: var(--font-guj);
+      font-size: var(--font-size-sm);
+      font-weight: 800;
+      background: transparent;
+      color: var(--text-secondary);
+      border: none;
+      cursor: pointer;
+      transition: all var(--transition);
+      min-width: 100px;
+      white-space: nowrap;
+      text-align: center;
+    }
+    .tab-btn:hover:not(.active) {
+      color: var(--text-primary);
+      background: var(--lavender-light);
+    }
+    .tab-btn.active {
+      background: linear-gradient(135deg, #B388FF 0%, #7C4DFF 100%);
+      color: #FFFFFF;
+      box-shadow: 0 4px 14px rgba(124, 77, 255, 0.35);
+      transform: translateY(-2px);
+    }
+    .tab-content { display: none; }
+    .tab-content.active { display: block; animation: slideIn 0.3s ease; }
+  </style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav class="navbar">
+  <div class="container">
+    <a href="index.html" class="logo">
+      <svg class="logo-icon" viewBox="0 0 40 40" fill="none">
+        <circle cx="20" cy="20" r="20" fill="url(#lg3)"/>
+        <text x="50%" y="56%" text-anchor="middle" dominant-baseline="middle" font-size="22" fill="white">♪</text>
+        <defs><linearGradient id="lg3" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
+          <stop stop-color="#87CEEB"/><stop offset="0.5" stop-color="#B39DDB"/><stop offset="1" stop-color="#F48FB1"/>
+        </linearGradient></defs>
+      </svg>
+      Rhymeverse
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">🏠 મુખ્ય પાનું</a></li>
+      <li><a href="rhymes.html" class="active">📖 બાળગીતો</a></li>
+      <li><a href="games.html">🎮 રમતો</a></li>
+      <li><a href="rhymes.html#learn">✏️ શીખો</a></li>
+      <li><a href="progress.html">🌟 મારી પ્રગતિ</a></li>
+    </ul>
+    <div class="nav-actions">
+      <div class="star-count">⭐ <span class="star-display-count">0</span></div>
+      <button class="nav-btn" id="btn-sound" title="ધ્વનિ">🔊</button>
+      <button class="nav-btn" id="btn-dark-mode" title="ડાર્ક મોડ">🌙</button>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobile-menu">
+  <div class="mobile-menu-panel">
+    <button class="mobile-menu-close" id="mobile-menu-close">✕</button>
+    <a href="index.html">🏠 મુખ્ય પાનું</a>
+    <a href="rhymes.html">📖 બાળગીતો</a>
+    <a href="games.html">🎮 રમતો</a>
+    <a href="rhymes.html#learn">✏️ શીખો</a>
+    <a href="progress.html">🌟 મારી પ્રગતિ</a>
+  </div>
+</div>
+
+<!-- RHYME HERO SECTION -->
+<div id="rhyme-hero" class="rhyme-detail-hero" style="background: linear-gradient(135deg, #87CEEB, #B39DDB);">
+  <div class="container">
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:16px;">
+      <a href="rhymes.html" style="color:rgba(255,255,255,0.8);font-size:0.9rem;">← બધાં જોડકણાં</a>
+    </div>
+    <div style="display:grid;grid-template-columns:auto 1fr;gap:32px;align-items:center;">
+      <div id="rhyme-emoji-big" style="font-size:100px;animation:float 3s ease-in-out infinite;">🐦</div>
+      <div>
+        <div id="rhyme-category-badge" class="badge-chip" style="margin-bottom:12px;">📂 પક્ષીઓ</div>
+        <h1 id="rhyme-title" style="color:#fff;font-size:2rem;text-shadow:0 2px 8px rgba(0,0,0,0.15);">
+          ચકીબેન ચકીબેન
+        </h1>
+        <div style="display:flex;align-items:center;gap:12px;margin-top:12px;flex-wrap:wrap;">
+          <span id="rhyme-difficulty-badge" class="badge-chip">⭐ Easy</span>
+          <button id="btn-favorite-detail" class="btn btn-outline btn-sm" style="border-color:rgba(255,255,255,0.5);color:#fff;"
+                  onclick="DetailPage.toggleFav()">☆ મનપસંદ</button>
+          <div id="rhyme-stars-earned" class="star-count" style="background:rgba(255,255,255,0.3);">⭐ 0</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- BREADCRUMB NAV -->
+<div style="background:var(--bg-card);border-bottom:1px solid var(--border-color);">
+  <div class="container" style="padding:0 24px;">
+    <div style="display:flex;align-items:center;gap:16px;overflow-x:auto;">
+      <button id="btn-prev-rhyme" class="btn btn-outline btn-sm" style="flex-shrink:0;">← અગાઉ</button>
+      <div id="rhyme-nav-dots" style="display:flex;gap:6px;flex:1;justify-content:center;overflow-x:auto;padding:12px 0;">
+        <!-- dots -->
+      </div>
+      <button id="btn-next-rhyme" class="btn btn-outline btn-sm" style="flex-shrink:0;">આગળ →</button>
+    </div>
+  </div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div style="background:var(--bg-secondary);padding:40px 0 80px;">
+  <div class="container">
+    <div style="max-width:860px;margin:0 auto;">
+
+      <!-- TAB NAVIGATION -->
+      <div class="tab-buttons">
+        <button class="tab-btn active" onclick="DetailPage.showTab('lyrics', this)">🎵 ઓડિયો & ગીત</button>
+        <button class="tab-btn" onclick="DetailPage.showTab('vocab', this)">📚 શબ્દ ભંડોળ</button>
+        <button class="tab-btn" onclick="DetailPage.showTab('quiz', this)">❓ ક્વિઝ</button>
+      </div>
+
+      <!-- TAB: LYRICS & VIDEO -->
+      <div id="tab-lyrics" class="tab-content active">
+        <!-- Video Theater Player -->
+        <div class="video-theater-card" style="margin-bottom:28px;">
+          <div class="video-theater-header">
+            <div class="video-status-chip">🎵 એનિમેશન & સંગીત ઓડિયો</div>
+            <div id="video-now-playing" style="font-weight:700;font-size:0.95rem;color:rgba(255,255,255,0.95);"></div>
+          </div>
+          <div class="theater-video-wrapper">
+            <video id="detail-rhyme-video" controls playsinline preload="auto">
+              તમારું બ્રાઉઝર વિડિયો સપોર્ટ કરતું નથી.
+            </video>
+          </div>
+          <div class="video-control-strip">
+            <div class="video-ctrl-group">
+              <button class="v-btn" onclick="DetailPage.jumpVideo(-5)" title="૫ સેકન્ડ પાછળ">⏪ -5s</button>
+              <button class="v-btn v-btn-primary" id="btn-theater-play" onclick="DetailPage.toggleVideoPlay()">▶️ પ્લે / પોઝ</button>
+              <button class="v-btn" onclick="DetailPage.jumpVideo(5)" title="૫ સેકન્ડ આગળ">+5s ⏩</button>
+              <button class="v-btn" id="btn-theater-repeat" onclick="DetailPage.restartVideo()" title="ફરીથી ચલાવો">🔁 ફરીથી</button>
+            </div>
+            <div class="video-speed-group">
+              <span style="font-size:0.85rem;color:rgba(255,255,255,0.8);font-weight:700;">ઝડપ:</span>
+              <button class="v-speed-btn" onclick="DetailPage.setVideoSpeed(0.75, this)">0.75x</button>
+              <button class="v-speed-btn active" onclick="DetailPage.setVideoSpeed(1.0, this)">1x</button>
+              <button class="v-speed-btn" onclick="DetailPage.setVideoSpeed(1.25, this)">1.25x</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Lyrics (Sing Along) -->
+        <div style="background:var(--bg-card);border-radius:var(--radius-lg);padding:18px 24px;border:2px solid var(--border-color);margin-bottom:16px;box-shadow:var(--shadow-xs);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;">
+          <h3 style="margin:0;color:var(--text-primary);font-size:1.15rem;display:flex;align-items:center;gap:8px;">
+            📝 સાથે ગાઓ અને વાંચો
+          </h3>
+          <span style="font-size:0.85rem;color:var(--text-secondary);font-weight:600;">💡 ઓડિયો સાથે પંક્તિઓ આપમેળે હાઇલાઇટ થશે!</span>
+        </div>
+        <div class="lyrics-container" style="margin-top:0;">
+          <div id="lyrics-display"></div>
+        </div>
+
+        <!-- Mark as Learned -->
+        <div style="text-align:center;margin-top:24px;">
+          <button id="btn-mark-learned" class="btn btn-mint btn-lg" onclick="DetailPage.markLearned()">
+            ✅ શીખ્યા! (+5 ⭐)
+          </button>
+        </div>
+      </div>
+
+      <!-- TAB: VOCABULARY -->
+      <div id="tab-vocab" class="tab-content">
+        <div style="background:var(--bg-card);border-radius:var(--radius-lg);padding:24px;box-shadow:var(--shadow-sm);margin-bottom:20px;">
+          <h3 style="color:var(--text-primary);margin-bottom:8px;">📚 શબ્દ ભંડોળ</h3>
+          <p style="color:var(--text-secondary);">નીચેના શબ્દો ઉપર ક્લિક કરો - ઉચ્ચારણ સાંભળો</p>
+        </div>
+        <div class="vocab-grid" id="vocab-grid"></div>
+        <div style="text-align:center;margin-top:24px;">
+          <button class="btn btn-sky" onclick="DetailPage.markVocabLearned()">
+            📚 શબ્દ ભંડોળ પૂર્ણ (+3 ⭐)
+          </button>
+        </div>
+      </div>
+
+      <!-- TAB: QUIZ -->
+      <div id="tab-quiz" class="tab-content">
+        <div id="quiz-container"></div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">♪ Rhymeverse</div>
+        <p class="footer-desc">ગુજરાતી ભાષા અને સંસ્કૃતિ શીખવા માટેનું મઝેદાર, રંગીન, ઇન્ટ્રેક્ટિવ શૈક્ષણિક મંચ.</p>
+      </div>
+      <div>
+        <div class="footer-heading">ઝડપી લિંક</div>
+        <ul class="footer-links">
+          <li><a href="index.html">🏠 મુખ્ય પાનું</a></li>
+          <li><a href="rhymes.html">📖 બાળગીતો</a></li>
+          <li><a href="games.html">🎮 રમતો</a></li>
+          <li><a href="progress.html">🌟 પ્રગતિ</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-heading">માહિતી</div>
+        <ul class="footer-links">
+          <li><a href="#">👨‍👩‍👧 અમારા વિશે</a></li>
+          <li><a href="#">👪 વાલીઓ માટે</a></li>
+          <li><a href="#">📧 સંપર્ક</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2024 Rhymeverse &mdash; ગુજરાતી શિક્ષણ | ♪ ગાઈએ, રમીએ, શીખીએ!
+    </div>
+  </div>
+</footer>
+
+<script src="js/data.js?v=3"></script>
+<script src="js/app.js?v=3"></script>
+<script src="js/components.js?v=3"></script>
+<script>
+  const DetailPage = {
+    rhyme: null,
+    rhymeId: 1,
+    speed: 1.0,
+    isPlaying: false,
+    quizAnswered: [],
+    quizScore: 0,
+
+    init() {
+      const params = new URLSearchParams(window.location.search);
+      this.rhymeId = parseInt(params.get('id')) || 1;
+      let matched = RHYMES_DATA.find(r => r.id === this.rhymeId);
+      if (!matched || !matched.video) {
+        matched = RHYMES_DATA[0];
+        this.rhymeId = matched.id;
+      }
+      this.rhyme = matched;
+
+      this.renderHero();
+      this.renderVideo();
+      this.renderNav();
+      this.renderLyrics();
+      this.renderVocab();
+      this.renderQuiz();
+    },
+
+    retryVideo() {
+      const video = document.getElementById('detail-rhyme-video');
+      if (video && this.rhyme) {
+        const videoSrc = encodeURI(this.rhyme.video) + '?t=' + Date.now();
+        video.src = videoSrc;
+        video.load();
+        video.play().catch(e => console.log('Retry play error:', e));
+      }
+    },
+
+    renderVideo() {
+      const video = document.getElementById('detail-rhyme-video');
+      const nowPlaying = document.getElementById('video-now-playing');
+      const playBtn = document.getElementById('btn-theater-play');
+
+      if (!video) return;
+
+      const videoSrc = (this.rhyme && this.rhyme.video) ? this.rhyme.video : 'RHYMES/chaki ben chaki ben.mp4';
+
+      if (nowPlaying) {
+        nowPlaying.textContent = `${this.rhyme.emoji} ${this.rhyme.title}`;
+      }
+
+      video.pause();
+      video.src = encodeURI(videoSrc);
+      video.load();
+
+      // Check sound setting
+      if (window.App && App.state && App.state.settings && App.state.settings.sound === false) {
+        video.muted = true;
+      } else {
+        video.muted = false;
+      }
+
+      video.onerror = () => {
+        console.warn('Video failed to load:', videoSrc);
+        if (nowPlaying) {
+          nowPlaying.innerHTML = `⚠️ વિડિયો લોડ કરવામાં મુશ્કેલી પડી. <button class="btn btn-sm btn-mint" onclick="DetailPage.retryVideo()">🔄 ફરી ચલાવો</button>`;
+        }
+      };
+
+      video.onplay = () => {
+        if (playBtn) playBtn.innerHTML = '⏸️ પોઝ';
+        this.isPlaying = true;
+      };
+
+      video.onpause = () => {
+        if (playBtn) playBtn.innerHTML = '▶️ પ્લે / પોઝ';
+        this.isPlaying = false;
+      };
+
+      video.onended = () => {
+        if (playBtn) playBtn.innerHTML = '▶️ પ્લે / પોઝ';
+        this.isPlaying = false;
+        this.clearLineHighlight();
+        if (window.App) {
+          App.celebrate();
+          App.addStars(5, 'સંપૂર્ણ જોડકણું જોયું!');
+          App.markRhymeCompleted(this.rhymeId);
+          App.showToast('🎉 ખૂબ સરસ! +5 ⭐ મળ્યા!', 'success');
+        }
+      };
+
+      video.ontimeupdate = () => {
+        if (video.duration && this.rhyme.fullLyrics && this.rhyme.fullLyrics.length > 0) {
+          const ratio = video.currentTime / video.duration;
+          const lineIdx = Math.min(this.rhyme.fullLyrics.length - 1, Math.floor(ratio * this.rhyme.fullLyrics.length));
+          this.highlightLine(lineIdx);
+        }
+      };
+    },
+
+    renderHero() {
+      const r = this.rhyme;
+      document.getElementById('rhyme-emoji-big').textContent = r.emoji;
+      document.getElementById('rhyme-title').textContent = r.title;
+      document.getElementById('rhyme-category-badge').textContent = '📂 ' + r.categoryLabel;
+      document.getElementById('rhyme-difficulty-badge').textContent =
+        r.difficulty === 'easy' ? '⭐ સહેલુ' : r.difficulty === 'medium' ? '⭐⭐ મધ્ય' : '⭐⭐⭐ અઘ';
+      document.getElementById('rhyme-hero').style.background =
+        `linear-gradient(135deg, ${r.color}, #B39DDB)`;
+
+      // Stars
+      const state = App.getState();
+      const starsEl = document.getElementById('rhyme-stars-earned');
+      starsEl.textContent = `⭐ ${state.stars}`;
+
+      // Favorite button
+      const favBtn = document.getElementById('btn-favorite-detail');
+      const isFav = App.isFavorite(r.id);
+      favBtn.textContent = isFav ? '⭐ મનપસંદ' : '☆ મનપसंद';
+
+      // Page title
+      document.title = `${r.title} - Rhymeverse`;
+    },
+
+    renderNav() {
+      const dotsEl = document.getElementById('rhyme-nav-dots');
+      dotsEl.innerHTML = RHYMES_DATA.map(r => `
+        <a href="rhyme-detail.html?id=${r.id}"
+           style="width:10px;height:10px;border-radius:50%;
+                  background:${r.id === this.rhymeId ? 'var(--lavender)' : 'var(--border-color)'};
+                  display:inline-block;flex-shrink:0;transition:all 0.3s;"
+           title="${r.title}"></a>
+      `).join('');
+
+      const prevBtn = document.getElementById('btn-prev-rhyme');
+      const nextBtn = document.getElementById('btn-next-rhyme');
+      const idx = RHYMES_DATA.findIndex(r => r.id === this.rhymeId);
+
+      if (idx > 0) {
+        prevBtn.onclick = () => window.location.href = `rhyme-detail.html?id=${RHYMES_DATA[idx-1].id}`;
+        prevBtn.disabled = false;
+      } else {
+        prevBtn.disabled = true;
+        prevBtn.style.opacity = '0.4';
+      }
+
+      if (idx < RHYMES_DATA.length - 1) {
+        nextBtn.onclick = () => window.location.href = `rhyme-detail.html?id=${RHYMES_DATA[idx+1].id}`;
+        nextBtn.disabled = false;
+      } else {
+        nextBtn.disabled = true;
+        nextBtn.style.opacity = '0.4';
+      }
+    },
+
+    renderLyrics() {
+      const display = document.getElementById('lyrics-display');
+      display.innerHTML = this.rhyme.fullLyrics.map((line, i) =>
+        `<span class="lyric-line" data-line="${i}">${line}</span>`
+      ).join('');
+    },
+
+    renderVocab() {
+      const grid = document.getElementById('vocab-grid');
+      grid.innerHTML = this.rhyme.words.map(w => `
+        <div class="vocab-card" onclick="DetailPage.pronounceWord('${w.word}')" style="cursor:pointer;" title="ક્લિક = ઉચ્ચારણ">
+          <span class="vocab-emoji">${w.emoji}</span>
+          <div class="vocab-word">${w.word}</div>
+          <div class="vocab-meaning-en">${w.meaning}</div>
+          <div class="vocab-meaning-guj">${w.gujaratiMeaning}</div>
+          <div style="font-size:0.75rem;color:var(--text-muted);margin-top:6px;">🔊 ક્લિક કરો</div>
+        </div>
+      `).join('');
+    },
+
+    renderQuiz() {
+      const container = document.getElementById('quiz-container');
+      this.quizAnswered = [];
+      this.quizScore = 0;
+
+      container.innerHTML = `
+        <div style="background:var(--bg-card);border-radius:var(--radius-lg);padding:24px;box-shadow:var(--shadow-sm);margin-bottom:20px;">
+          <h3 style="color:var(--text-primary);margin-bottom:4px;">❓ ક્વિઝ</h3>
+          <p style="color:var(--text-secondary);">${this.rhyme.title} - 3 પ્રશ્ન</p>
+        </div>
+        ${this.rhyme.quiz.map((q, qi) => `
+          <div class="quiz-question" id="qq-${qi}">
+            <h4>${qi + 1}. ${q.question}</h4>
+            <div class="options-grid">
+              ${q.options.map((opt, oi) => `
+                <button class="option-btn" onclick="DetailPage.answerQuiz(${qi}, ${oi}, ${q.answer}, this)">
+                  ${opt}
+                </button>
+              `).join('')}
+            </div>
+            <div id="qq-feedback-${qi}" style="margin-top:10px;font-weight:600;font-size:0.9rem;display:none;"></div>
+          </div>
+        `).join('')}
+        <div style="text-align:center;margin-top:20px;">
+          <button id="btn-quiz-submit" class="btn btn-lavender btn-lg" onclick="DetailPage.submitQuiz()" disabled>
+            ✅ ક્વિઝ સબ્મિટ
+          </button>
+        </div>
+      `;
+    },
+
+    answerQuiz(qi, oi, correctIdx, btn) {
+      // Already answered this question?
+      if (this.quizAnswered[qi] !== undefined) return;
+
+      const qEl = document.getElementById(`qq-${qi}`);
+      const allBtns = qEl.querySelectorAll('.option-btn');
+      allBtns.forEach(b => b.disabled = true);
+
+      this.quizAnswered[qi] = oi;
+
+      const feedback = document.getElementById(`qq-feedback-${qi}`);
+      feedback.style.display = 'block';
+
+      if (oi === correctIdx) {
+        btn.classList.add('correct');
+        this.quizScore++;
+        feedback.innerHTML = '✅ સાચો જવાબ!';
+        feedback.style.color = '#66BB6A';
+      } else {
+        btn.classList.add('wrong');
+        allBtns[correctIdx].classList.add('correct');
+        feedback.innerHTML = '❌ ખોટો જવાબ! સાચો: ' + this.rhyme.quiz[qi].options[correctIdx];
+        feedback.style.color = '#EF5350';
+      }
+
+      // Enable submit when all answered
+      const totalQs = this.rhyme.quiz.length;
+      const answered = this.quizAnswered.filter(a => a !== undefined).length;
+      if (answered === totalQs) {
+        document.getElementById('btn-quiz-submit').disabled = false;
+      }
+    },
+
+    submitQuiz() {
+      const total = this.rhyme.quiz.length;
+      const score = this.quizScore;
+      const pct = Math.round((score / total) * 100);
+      const stars = pct === 100 ? 3 : pct >= 67 ? 2 : 1;
+      const starsEarned = stars * 5;
+
+      App.addStars(starsEarned, 'ક્વિઝ!');
+
+      const container = document.getElementById('quiz-container');
+      const qEls = container.querySelectorAll('.quiz-question');
+      qEls.forEach(el => el.style.opacity = '0.5');
+
+      const resultDiv = document.createElement('div');
+      resultDiv.className = 'quiz-result';
+      resultDiv.innerHTML = `
+        <div style="font-size:64px;margin-bottom:16px;">${pct === 100 ? '🏆' : pct >= 67 ? '🌟' : '📖'}</div>
+        <h3 style="color:var(--text-primary);margin-bottom:8px;">
+          ${pct === 100 ? 'ઉત્તમ! 🎉' : pct >= 67 ? 'ઘણું સારું!' : 'ફરી ક્રો!'}
+        </h3>
+        <p style="color:var(--text-secondary);margin-bottom:12px;">${score}/${total} સાચા</p>
+        <div style="display:flex;justify-content:center;gap:8px;margin:16px 0;">
+          ${[1,2,3].map(i => `<span style="font-size:32px;${i <= stars ? '' : 'opacity:0.2;'}">⭐</span>`).join('')}
+        </div>
+        <p style="color:var(--mint);font-weight:700;">+${starsEarned} ⭐ મળ્યા!</p>
+        <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:20px;">
+          <button class="btn btn-mint" onclick="DetailPage.renderQuiz()">🔄 ફરી ક્રો</button>
+          <a href="rhymes.html" class="btn btn-lavender">📖 જોડકણાં</a>
+        </div>
+      `;
+
+      container.appendChild(resultDiv);
+      document.getElementById('btn-quiz-submit').disabled = true;
+
+      if (pct === 100) App.celebrate();
+    },
+
+    showTab(tabId, btn) {
+      document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById('tab-' + tabId).classList.add('active');
+      btn.classList.add('active');
+
+      // Pause video when navigating away from video tab
+      if (tabId !== 'lyrics') {
+        const video = document.getElementById('detail-rhyme-video');
+        if (video && !video.paused) video.pause();
+      }
+
+      if (tabId === 'quiz') this.renderQuiz();
+    },
+
+    toggleVideoPlay() {
+      const video = document.getElementById('detail-rhyme-video');
+      if (!video) return;
+      if (video.paused) {
+        video.play().catch(e => console.log('Playback error:', e));
+      } else {
+        video.pause();
+      }
+    },
+
+    jumpVideo(seconds) {
+      const video = document.getElementById('detail-rhyme-video');
+      if (!video) return;
+      video.currentTime = Math.max(0, Math.min(video.duration || 9999, video.currentTime + seconds));
+    },
+
+    restartVideo() {
+      const video = document.getElementById('detail-rhyme-video');
+      if (!video) return;
+      video.currentTime = 0;
+      video.play().catch(e => console.log('Playback error:', e));
+    },
+
+    setVideoSpeed(rate, btn) {
+      const video = document.getElementById('detail-rhyme-video');
+      if (video) video.playbackRate = rate;
+      document.querySelectorAll('.v-speed-btn').forEach(b => b.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+    },
+
+    // Legacy wrappers for backwards compatibility
+    togglePlay() {
+      this.toggleVideoPlay();
+    },
+
+    repeatRhyme() {
+      this.restartVideo();
+    },
+
+    setSpeed(rate, btn) {
+      this.setVideoSpeed(rate, btn);
+    },
+
+    highlightLine(idx) {
+      const lines = document.querySelectorAll('.lyric-line');
+      lines.forEach(l => l.classList.remove('active'));
+      if (lines[idx]) {
+        lines[idx].classList.add('active');
+        lines[idx].scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+    },
+
+    clearLineHighlight() {
+      document.querySelectorAll('.lyric-line').forEach(l => l.classList.remove('active'));
+    },
+
+    pronounceWord(word) {
+      const video = document.getElementById('detail-rhyme-video');
+      if (video && !video.paused) video.pause();
+      if (window.speechSynthesis) {
+        window.speechSynthesis.cancel();
+        const utt = new SpeechSynthesisUtterance(word);
+        utt.lang = 'gu-IN';
+        window.speechSynthesis.speak(utt);
+      }
+    },
+
+    prevRhyme() {
+      const idx = RHYMES_DATA.findIndex(r => r.id === this.rhymeId);
+      if (idx > 0) window.location.href = `rhyme-detail.html?id=${RHYMES_DATA[idx-1].id}`;
+    },
+
+    toggleFav() {
+      const isNow = App.toggleFavorite(this.rhymeId);
+      const btn = document.getElementById('btn-favorite-detail');
+      btn.textContent = isNow ? '⭐ મનપસંદ' : '☆ મનપસંદ';
+    },
+
+    markLearned() {
+      App.markRhymeCompleted(this.rhymeId);
+      const btn = document.getElementById('btn-mark-learned');
+      btn.textContent = '✅ શીખ્યા! 🎉';
+      btn.disabled = true;
+      btn.style.opacity = '0.7';
+      App.celebrate();
+    },
+
+    markVocabLearned() {
+      App.markVocabularyCompleted(this.rhymeId);
+    }
+  };
+
+  document.addEventListener('DOMContentLoaded', () => {
+    DetailPage.init();
+  });
+</script>
+</body>
+</html>
