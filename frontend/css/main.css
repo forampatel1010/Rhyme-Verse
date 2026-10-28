@@ -65,16 +65,16 @@
   --transition: 0.28s cubic-bezier(0.34, 1.3, 0.64, 1);
   --transition-smooth: 0.3s ease;
 
-  /* Light mode defaults */
-  --bg-primary: #FFFDF9;
-  --bg-secondary: #F4F7FD;
+  /* Light mode defaults (Matching the warm butter-cream doodle frame #FDFCE0) */
+  --bg-primary: #FDFCE0;
+  --bg-secondary: #FFFDE8;
   --bg-card: #FFFFFF;
   --text-primary: #2C3442;
   --text-secondary: #5A6578;
   --text-muted: #8E9AAB;
-  --border-color: rgba(179, 136, 255, 0.15);
-  --border-color-hover: rgba(179, 136, 255, 0.4);
-  --nav-bg: rgba(255, 255, 255, 0.92);
+  --border-color: rgba(240, 168, 196, 0.35);
+  --border-color-hover: rgba(240, 98, 146, 0.55);
+  --nav-bg: rgba(253, 252, 224, 0.94);
 
   /* Rainbow Accents */
   --rainbow-bar: linear-gradient(90deg, #FF80AB 0%, #FFB74D 20%, #FFD54F 40%, #81C784 60%, #4FC3F7 80%, #B388FF 100%);
@@ -118,7 +118,7 @@ html {
 
 body {
   font-family: var(--font-guj);
-  background: #E8F4FD radial-gradient(circle at 50% 0%, #FFFFFF 0%, #E3F2FD 45%, #EBF7FF 100%);
+  background: #FDFCE0 radial-gradient(circle at 50% 0%, #FFFEEA 0%, #FDFCE0 50%, #F9F7D0 100%);
   background-attachment: fixed;
   color: var(--text-primary);
   line-height: 1.7;
@@ -1471,109 +1471,91 @@ body.dark-mode .progress-bar-wrap {
 }
 
 /* =========================================================
-   STICKERS IN A ROW ON THE SIDES OF THE SCREEN
+   WHIMSICAL STORYBOOK DOODLE FRAME AROUND DASHBOARD LAYOUT
+   (Featuring authentic crayon flowers, sun, rainbows, hearts & butterflies)
    ========================================================= */
-.stickers-side-rail {
+.doodle-layout-frame-left,
+.doodle-layout-frame-right {
   position: fixed;
-  top: 96px;
-  bottom: 24px;
-  width: 95px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-evenly;
+  top: 0;
+  bottom: 0;
+  width: 140px;
+  z-index: 95;
   pointer-events: none;
-  z-index: 100;
+  background-repeat: repeat-y;
+  background-size: 100% auto;
+  opacity: 0.98;
   transition: opacity 0.3s ease;
 }
 
-.rail-left {
-  left: 14px;
+.doodle-layout-frame-left {
+  left: max(6px, calc(50% - 615px - 145px));
+  background-image: url('../assets/images/doodle_strip_left.png');
+  background-position: left top;
 }
 
-.rail-right {
-  right: 14px;
+.doodle-layout-frame-right {
+  right: max(6px, calc(50% - 615px - 145px));
+  background-image: url('../assets/images/doodle_strip_right.png');
+  background-position: right top;
 }
 
-.sticker-wrapper {
+/* Top & Bottom Doodle Frame Ribbons around Dashboard Content */
+.doodle-frame-banner-top {
+  width: 100%;
+  max-width: 680px;
+  margin: 8px auto 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   pointer-events: auto;
   cursor: pointer;
-  position: relative;
-  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.35s ease;
   user-select: none;
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-/* Authentic Die-Cut Vinyl Sticker Styling (Crisp white die-cut contour) */
-.diecut-sticker {
-  display: block;
-  max-width: 100%;
+.doodle-frame-banner-top:hover {
+  transform: scale(1.03) translateY(-3px);
+}
+
+.doodle-frame-banner-top img {
+  width: 100%;
+  max-width: 540px;
   height: auto;
-  object-fit: contain;
-  filter: drop-shadow(0 0 1.5px #FFFFFF)
-          drop-shadow(0 0 3px #FFFFFF)
-          drop-shadow(0 0 5px rgba(255, 255, 255, 0.95))
-          drop-shadow(0 8px 18px rgba(0, 0, 0, 0.16));
-  transition: filter 0.35s ease;
+  display: block;
+  filter: drop-shadow(0 4px 14px rgba(255, 183, 77, 0.28));
+  animation: doodleGentleFloat 5s ease-in-out infinite;
 }
 
-/* Individual organic sticker tilts */
-.sticker-doraemon-wrap {
-  transform: rotate(-3deg);
-  max-width: 86px;
-  animation: stickerFloat 4s ease-in-out infinite;
-}
-.sticker-bheem-wrap {
-  transform: rotate(4deg);
-  max-width: 80px;
-  animation: stickerFloat 4.4s ease-in-out infinite 0.6s;
-}
-.sticker-hattori-wrap {
-  transform: rotate(3deg);
-  max-width: 86px;
-  animation: stickerFloat 3.8s ease-in-out infinite 0.3s;
-}
-.sticker-pikachu-wrap {
-  transform: rotate(-4deg);
-  max-width: 82px;
-  animation: stickerFloat 4.2s ease-in-out infinite 0.9s;
-}
-.sticker-tomjerry-wrap {
-  transform: rotate(5deg);
-  max-width: 88px;
-  animation: stickerFloat 4.6s ease-in-out infinite 1.2s;
-}
-.sticker-signpost-wrap {
-  transform: rotate(-2deg);
-  max-width: 90px;
-  animation: stickerFloat 5s ease-in-out infinite 0.2s;
+.doodle-frame-banner-bottom {
+  width: 100%;
+  max-width: 680px;
+  margin: 32px auto 14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: auto;
+  cursor: pointer;
+  user-select: none;
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-@keyframes stickerFloat {
-  0%, 100% { transform: translateY(0px) rotate(var(--rot, 0deg)); }
-  50% { transform: translateY(-8px) rotate(calc(var(--rot, 0deg) + 2deg)); }
+.doodle-frame-banner-bottom:hover {
+  transform: scale(1.03) translateY(-3px);
 }
 
-.sticker-doraemon-wrap { --rot: -3deg; }
-.sticker-bheem-wrap { --rot: 4deg; }
-.sticker-hattori-wrap { --rot: 3deg; }
-.sticker-pikachu-wrap { --rot: -4deg; }
-.sticker-tomjerry-wrap { --rot: 5deg; }
-.sticker-signpost-wrap { --rot: -2deg; }
-
-/* Interactive Sticker Hover Peeling Effect */
-.sticker-wrapper:hover {
-  transform: scale(1.22) translateY(-8px) rotate(8deg) !important;
-  z-index: 120;
-}
-.sticker-wrapper:hover .diecut-sticker {
-  filter: drop-shadow(0 0 2px #FFFFFF)
-          drop-shadow(0 0 6px #FFE082)
-          drop-shadow(0 0 10px rgba(255, 224, 130, 0.85))
-          drop-shadow(0 14px 28px rgba(0, 0, 0, 0.24));
+.doodle-frame-banner-bottom img {
+  width: 100%;
+  max-width: 520px;
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 4px 14px rgba(240, 98, 146, 0.24));
+  animation: doodleGentleFloat 5.4s ease-in-out infinite 0.7s;
 }
 
-.sticker-wrapper:active {
-  transform: scale(0.95) rotate(0deg) !important;
+@keyframes doodleGentleFloat {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-6px); }
 }
 
 @media (min-width: 1400px) {
@@ -1587,19 +1569,26 @@ body.dark-mode .progress-bar-wrap {
     max-width: 980px;
     padding: 0 16px;
   }
-  .stickers-side-rail {
-    width: 80px;
+  .doodle-layout-frame-left,
+  .doodle-layout-frame-right {
+    width: 110px;
   }
-  .rail-left { left: 8px; }
-  .rail-right { right: 8px; }
-  .sticker-wrapper {
-    max-width: 72px;
+  .doodle-layout-frame-left {
+    left: max(4px, calc(50% - 505px - 114px));
+  }
+  .doodle-layout-frame-right {
+    right: max(4px, calc(50% - 505px - 114px));
   }
 }
 @media (max-width: 1199px) {
-  /* On tablets and mobile, hide side sticker rails so they never block content */
-  .stickers-side-rail {
+  /* On tablets and mobile, side doodle rails tuck away so dashboard cards stay spacious */
+  .doodle-layout-frame-left,
+  .doodle-layout-frame-right {
     display: none !important;
+  }
+  .doodle-frame-banner-top img,
+  .doodle-frame-banner-bottom img {
+    max-width: 92%;
   }
 }
 

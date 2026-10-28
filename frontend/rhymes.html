@@ -14,30 +14,9 @@
 </head>
 <body>
 
-<!-- STICKERS IN A ROW ON THE SIDES OF THE SCREEN -->
-<aside class="stickers-side-rail rail-left" aria-label="ડાબી બાજુના સ્ટીકર્સ">
-  <div class="sticker-wrapper sticker-doraemon-wrap" onclick="App.celebrate()" title="ડોરેમોન">
-    <img src="assets/images/sticker_doraemon.png" alt="ડોરેમોન સ્ટીકર" class="diecut-sticker">
-  </div>
-  <div class="sticker-wrapper sticker-bheem-wrap" onclick="App.celebrate()" title="છોટા ભીમ">
-    <img src="assets/images/sticker_bheem.png" alt="છોટા ભીમ સ્ટીકર" class="diecut-sticker">
-  </div>
-</aside>
-
-<aside class="stickers-side-rail rail-right" aria-label="જમણી બાજુના સ્ટીકર્સ">
-  <div class="sticker-wrapper sticker-hattori-wrap" onclick="App.celebrate()" title="હાતોરી">
-    <img src="assets/images/sticker_hattori.png" alt="હાતોરી સ્ટીકર" class="diecut-sticker">
-  </div>
-  <div class="sticker-wrapper sticker-pikachu-wrap" onclick="App.celebrate()" title="પીકાચૂ">
-    <img src="assets/images/sticker_pikachu.png" alt="પીકાચૂ સ્ટીકર" class="diecut-sticker">
-  </div>
-  <div class="sticker-wrapper sticker-tomjerry-wrap" onclick="App.celebrate()" title="ટોમ અને જેરી">
-    <img src="assets/images/sticker_tom_jerry.png" alt="ટોમ અને જેરી સ્ટીકર" class="diecut-sticker">
-  </div>
-  <div class="sticker-wrapper sticker-signpost-wrap" onclick="App.celebrate()" title="Read Play Learn Grow">
-    <img src="assets/images/sticker_signpost.png" alt="સાઇનપોસ્ટ સ્ટીકર" class="diecut-sticker">
-  </div>
-</aside>
+<!-- WHIMSICAL STORYBOOK DOODLE FRAME AROUND DASHBOARD LAYOUT -->
+<div class="doodle-layout-frame-left" aria-hidden="true" title="RhymeVerse Doodle Frame"></div>
+<div class="doodle-layout-frame-right" aria-hidden="true" title="RhymeVerse Doodle Frame"></div>
 
 <!-- NAVIGATION -->
 <nav class="navbar">
@@ -81,6 +60,11 @@
     <a href="rhymes.html#learn">💡 શિક્ષણ</a>
     <a href="progress.html">✏️ મારી પ્રગતિ</a>
   </div>
+</div>
+
+<!-- TOP DOODLE FRAME BANNER (RAINBOW, SMILING SUN, BLOSSOMS) -->
+<div class="doodle-frame-banner-top" aria-hidden="true" onclick="if(window.App) App.celebrate();" title="જાદુઈ સુરજ અને મેઘધનુષ">
+  <img src="assets/images/doodle_strip_top.png" alt="Doodle Rainbow and Sun Frame Banner">
 </div>
 
 <!-- PAGE HEADER -->
@@ -148,6 +132,10 @@
       <!-- Populated dynamically with all rhyme topics -->
     </div>
   </div>
+  <!-- BOTTOM DOODLE FRAME BANNER (SMILEY, ICE CREAM, WINGED HEART) -->
+  <div class="doodle-frame-banner-bottom" aria-hidden="true" onclick="if(window.App) App.celebrate();" title="મીઠી આઈસ્ક્રીમ અને સ્માઈલી">
+    <img src="assets/images/doodle_strip_bottom.png" alt="Doodle Smiley and Ice Cream Frame Banner">
+  </div>
 </section>
 
 <!-- FOOTER -->
@@ -182,9 +170,9 @@
   </div>
 </footer>
 
-<script src="js/data.js?v=7"></script>
-<script src="js/app.js?v=7"></script>
-<script src="js/components.js?v=7"></script>
+<script src="js/data.js?v=8"></script>
+<script src="js/app.js?v=8"></script>
+<script src="js/components.js?v=8"></script>
 <script>
   let currentCategory = 'all';
 
