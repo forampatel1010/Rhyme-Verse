@@ -7,10 +7,10 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Gujarati:wght@400;500;600;700;800&family=Noto+Serif+Gujarati:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/main.css">
-  <link rel="stylesheet" href="css/animations.css">
-  <link rel="stylesheet" href="css/components.css">
-  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/main.css?v=4">
+  <link rel="stylesheet" href="css/animations.css?v=4">
+  <link rel="stylesheet" href="css/components.css?v=4">
+  <link rel="stylesheet" href="css/responsive.css?v=4">
   <style>
     .rhyme-detail-hero {
       padding: 48px 0;
@@ -78,6 +78,198 @@
     }
     .tab-content { display: none; }
     .tab-content.active { display: block; animation: slideIn 0.3s ease; }
+
+    /* ===== VIDEO THEATER PLAYER ALIGNMENT & DESIGN ===== */
+    .video-theater-card {
+      background: linear-gradient(145deg, #1A1D27 0%, #11141C 100%);
+      border-radius: 28px;
+      padding: 24px;
+      color: #FFFFFF;
+      box-shadow: 0 20px 48px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.1);
+      border: 3px solid rgba(179, 136, 255, 0.25);
+      margin: 0 auto 32px auto;
+      max-width: 100%;
+      width: 100%;
+      box-sizing: border-box;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .video-theater-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #FF4081, #7C4DFF, #00E5FF, #00E676);
+    }
+
+    .video-theater-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 18px;
+      flex-wrap: wrap;
+      gap: 12px;
+      width: 100%;
+    }
+
+    .video-status-chip {
+      background: linear-gradient(135deg, #FF4081, #7C4DFF);
+      color: #FFFFFF !important;
+      font-family: var(--font-guj);
+      font-size: 0.9rem;
+      font-weight: 800;
+      padding: 7px 18px;
+      border-radius: 50px;
+      box-shadow: 0 4px 14px rgba(124, 77, 255, 0.45);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      letter-spacing: 0.01em;
+    }
+
+    #video-now-playing {
+      color: #FFFFFF !important;
+      font-weight: 800;
+      font-size: 1.05rem;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+      background: rgba(255, 255, 255, 0.1);
+      padding: 6px 16px;
+      border-radius: 50px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .theater-video-wrapper {
+      position: relative;
+      width: 100%;
+      max-width: 100%;
+      border-radius: 20px;
+      overflow: hidden;
+      background: #000000;
+      aspect-ratio: 16 / 9;
+      max-height: 520px;
+      box-shadow: 0 14px 36px rgba(0, 0, 0, 0.6);
+      border: 2px solid rgba(255, 255, 255, 0.14);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .theater-video-wrapper video,
+    #detail-rhyme-video {
+      width: 100% !important;
+      max-width: 100% !important;
+      height: 100% !important;
+      max-height: 520px !important;
+      object-fit: contain !important;
+      display: block !important;
+      background: #000000 !important;
+      margin: 0 auto !important;
+    }
+
+    .video-control-strip {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 20px;
+      gap: 16px;
+      flex-wrap: wrap;
+      width: 100%;
+      padding-top: 14px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .video-ctrl-group {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .v-btn {
+      padding: 10px 18px;
+      border-radius: 50px;
+      background: rgba(255, 255, 255, 0.12);
+      color: #FFFFFF;
+      font-family: var(--font-guj);
+      font-size: 0.9rem;
+      font-weight: 800;
+      border: 1.5px solid rgba(255, 255, 255, 0.22);
+      cursor: pointer;
+      transition: all 0.25s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      user-select: none;
+    }
+
+    .v-btn:hover {
+      background: rgba(255, 255, 255, 0.25);
+      transform: translateY(-2px);
+      border-color: rgba(255, 255, 255, 0.5);
+    }
+
+    .v-btn.v-btn-primary {
+      background: linear-gradient(135deg, #00E676 0%, #00B0FF 100%);
+      color: #FFFFFF;
+      border-color: transparent;
+      box-shadow: 0 6px 18px rgba(0, 176, 255, 0.4);
+      font-size: 1rem;
+      padding: 12px 24px;
+    }
+
+    .v-btn.v-btn-primary:hover {
+      transform: translateY(-2px) scale(1.04);
+      box-shadow: 0 8px 24px rgba(0, 230, 118, 0.5);
+    }
+
+    .video-speed-group {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .v-speed-btn {
+      padding: 6px 14px;
+      border-radius: 50px;
+      background: rgba(255, 255, 255, 0.08);
+      color: rgba(255, 255, 255, 0.85);
+      font-family: var(--font-guj);
+      font-size: 0.82rem;
+      font-weight: 800;
+      border: 1.5px solid rgba(255, 255, 255, 0.18);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .v-speed-btn.active,
+    .v-speed-btn:hover {
+      background: linear-gradient(135deg, #B388FF, #7C4DFF);
+      color: #FFFFFF;
+      border-color: #B388FF;
+      box-shadow: 0 4px 12px rgba(124, 77, 255, 0.35);
+      transform: scale(1.05);
+    }
+
+    @media (max-width: 768px) {
+      .video-theater-card {
+        padding: 16px 12px;
+        border-radius: 20px;
+      }
+      .video-control-strip {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 14px;
+      }
+      .video-ctrl-group,
+      .video-speed-group {
+        justify-content: center;
+      }
+    }
   </style>
 </head>
 <body>
@@ -162,11 +354,11 @@
 
 <!-- MAIN CONTENT -->
 <div style="background:var(--bg-secondary);padding:40px 0 80px;">
-  <div class="container">
-    <div style="max-width:860px;margin:0 auto;">
+  <div class="container" style="display:flex;flex-direction:column;align-items:center;">
+    <div style="max-width:880px;width:100%;margin:0 auto;box-sizing:border-box;">
 
       <!-- TAB NAVIGATION -->
-      <div class="tab-buttons">
+      <div class="tab-buttons" style="max-width:540px;margin:0 auto 28px auto;">
         <button class="tab-btn active" onclick="DetailPage.showTab('lyrics', this)">🎵 ઓડિયો & ગીત</button>
         <button class="tab-btn" onclick="DetailPage.showTab('vocab', this)">📚 શબ્દ ભંડોળ</button>
         <button class="tab-btn" onclick="DetailPage.showTab('quiz', this)">❓ ક્વિઝ</button>
