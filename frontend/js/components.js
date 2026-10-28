@@ -10,34 +10,31 @@ const Components = {
       <nav class="navbar">
         <div class="container">
           <a href="index.html" class="logo">
-            <svg class="logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="20" cy="20" r="20" fill="url(#logoGrad)"/>
-              <text x="50%" y="55%" text-anchor="middle" dominant-baseline="middle" font-size="22" fill="white">♪</text>
-              <defs>
-                <linearGradient id="logoGrad" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
-                  <stop stop-color="#87CEEB"/>
-                  <stop offset="0.5" stop-color="#B39DDB"/>
-                  <stop offset="1" stop-color="#F48FB1"/>
-                </linearGradient>
-              </defs>
-            </svg>
-            Rhymeverse
+            <span class="logo-star-icon">⭐</span>
+            <div class="logo-text-group">
+              <span class="logo-title">RhymeVerse</span>
+              <span class="logo-tagline">Little Words, Big Dreams!</span>
+            </div>
           </a>
 
           <ul class="nav-links">
-            <li><a href="index.html" ${activePage === 'home' ? 'class="active"' : ''}>🏠 મુખ્ય પાનું</a></li>
+            <li><a href="index.html" ${activePage === 'home' ? 'class="active"' : ''}>🏠 હોમ</a></li>
             <li><a href="rhymes.html" ${activePage === 'rhymes' ? 'class="active"' : ''}>📖 બાળગીતો</a></li>
+            <li><a href="rhymes.html#stories" ${activePage === 'stories' ? 'class="active"' : ''}>📖 વાર્તાઓ</a></li>
             <li><a href="games.html" ${activePage === 'games' ? 'class="active"' : ''}>🎮 રમતો</a></li>
-            <li><a href="rhymes.html#learn" ${activePage === 'learn' ? 'class="active"' : ''}>✏️ શીખો</a></li>
-            <li><a href="progress.html" ${activePage === 'progress' ? 'class="active"' : ''}>🌟 મારી પ્રગતિ</a></li>
+            <li><a href="rhymes.html#learn" ${activePage === 'learn' ? 'class="active"' : ''}>💡 શિક્ષણ</a></li>
+            <li><a href="progress.html" ${activePage === 'progress' ? 'class="active"' : ''}>✏️ મારી પ્રગતિ</a></li>
           </ul>
 
           <div class="nav-actions">
-            <div class="star-count">
-              ⭐ <span class="star-display-count">0</span>
+            <div class="star-count" title="તમારા મળેલા તારા">
+              ⭐ <span class="star-display-count">5</span>
             </div>
             <button class="nav-btn" id="btn-sound" title="ધ્વનિ">🔊</button>
             <button class="nav-btn" id="btn-dark-mode" title="ડાર્ક મોડ">🌙</button>
+            <div class="nav-avatar-wrap" title="બાળક પ્રોફાઇલ">
+              <img src="assets/images/avatar_kid.jpg" alt="બાળક પ્રોફાઇલ" class="nav-avatar">
+            </div>
             <button class="hamburger" id="hamburger" aria-label="Menu">
               <span></span><span></span><span></span>
             </button>
@@ -48,11 +45,12 @@ const Components = {
       <div class="mobile-menu" id="mobile-menu">
         <div class="mobile-menu-panel">
           <button class="mobile-menu-close" id="mobile-menu-close">✕</button>
-          <a href="index.html">🏠 મુખ્ય પાનું</a>
+          <a href="index.html">🏠 હોમ</a>
           <a href="rhymes.html">📖 બાળગીતો</a>
+          <a href="rhymes.html#stories">📖 વાર્તાઓ</a>
           <a href="games.html">🎮 રમતો</a>
-          <a href="rhymes.html#learn">✏️ શીખો</a>
-          <a href="progress.html">🌟 મારી પ્રગતિ</a>
+          <a href="rhymes.html#learn">💡 શિક્ષણ</a>
+          <a href="progress.html">✏️ મારી પ્રગતિ</a>
         </div>
       </div>
     `;
@@ -66,17 +64,17 @@ const Components = {
           <div class="footer-grid">
             <div>
               <div class="footer-logo">
-                ♪ Rhymeverse
+                ⭐ RhymeVerse
               </div>
               <p class="footer-desc">
-                ગુજરાતી ભાષા અને સંસ્કૃતિ શીખવા માટેનું મજેદાર, રંગીન, ઇન્ટરેક્ટિવ શૈક્ષણિક મંચ. 
-                બાળકો માટે ગીત, રમત અને ભણતર - એક સ્થળે.
+                ગુજરાતી ભાષા અને બાળસાહિત્ય શીખવા માટેનું જાદુઈ, રંગીન, ઇન્ટરેક્ટિવ શૈક્ષણિક મંચ.
+                ગીતો, વાર્તાઓ અને શીખવાની દુનિયામાં તમારું હાર્દિક સ્વાગત છે!
               </p>
             </div>
             <div>
               <div class="footer-heading">ઝડપી લિંક</div>
               <ul class="footer-links">
-                <li><a href="index.html">🏠 મુખ્ય પાનું</a></li>
+                <li><a href="index.html">🏠 હોમ</a></li>
                 <li><a href="rhymes.html">📖 બાળગીતો</a></li>
                 <li><a href="games.html">🎮 રમતો</a></li>
                 <li><a href="progress.html">🌟 પ્રગતિ</a></li>
@@ -93,39 +91,41 @@ const Components = {
             </div>
           </div>
           <div class="footer-bottom">
-            &copy; 2024 Rhymeverse &mdash; ગુજરાતી શિક્ષણ | ♪ ગાઈએ, રમીએ, શીખીએ!
+            &copy; 2026 RhymeVerse &mdash; Little Words, Big Dreams! | ♪ ગાઈએ, રમીએ, શીખીએ!
           </div>
         </div>
       </footer>
     `;
   },
 
-  // Build rhyme card
+  // Build rhyme card matching the reference UI
   buildRhymeCard(rhyme) {
-    const isFav = App.isFavorite(rhyme.id);
+    const isFav = window.App ? App.isFavorite(rhyme.id) : false;
+    const lyricsLines = (rhyme.preview || '').split('\n').filter(Boolean).slice(0, 2);
+    const lyricsHtml = lyricsLines.length > 0 ? lyricsLines.join('<br>') : rhyme.title;
+    const cardColor = rhyme.color || '#E91E63';
+    const thumbImg = rhyme.image || 'assets/images/hero_reading_kid.jpg';
+
     return `
-      <div class="rhyme-card" data-id="${rhyme.id}" data-title="${rhyme.title}"
-           data-category="${rhyme.categoryLabel}" data-preview="${rhyme.preview}"
-           style="border-top-color: ${rhyme.color};">
-        <div class="rhyme-card-illustration" style="background: ${rhyme.color}22; cursor:pointer;"
-             onclick="RhymeCards.playVideo(${rhyme.id})" title="ઓડિયો સાંભળવા ક્લિક કરો">
-          <span style="font-size:72px;animation:float 3s ease-in-out infinite;">${rhyme.emoji}</span>
-          <span class="video-play-chip">▶️ ઓડિયો</span>
-        </div>
-        <div class="rhyme-card-header">
-          <h3 class="rhyme-card-title">${rhyme.title}</h3>
-          <span class="rhyme-card-category">${rhyme.categoryLabel}</span>
-        </div>
-        <p class="rhyme-card-preview">${rhyme.preview}</p>
-        <div class="rhyme-card-actions">
-          <button class="btn-play" onclick="RhymeCards.playVideo(${rhyme.id})" data-rhyme-id="${rhyme.id}" title="ઓડિયો અને ગીત સાંભળો">
-            ▶️ ઓડિયો
+      <div class="storybook-card rhyme-card" data-id="${rhyme.id}" data-title="${rhyme.title}"
+           data-category="${rhyme.categoryLabel}" data-preview="${rhyme.preview}">
+        <div class="storybook-thumb-wrap" onclick="RhymeCards.playVideo(${rhyme.id})" title="ઓડિયો સાંભળવા ક્લિક કરો">
+          <img src="${thumbImg}" alt="${rhyme.title}" class="storybook-thumb" loading="lazy">
+          <button class="storybook-star-badge ${isFav ? 'active' : ''}"
+                  onclick="event.stopPropagation(); RhymeCards.toggleFav(${rhyme.id}, this)" title="મનપસંદ">
+            ⭐
           </button>
-          <a href="rhyme-detail.html?id=${rhyme.id}" class="btn-learn" title="સંપૂર્ણ જોડકણું અને ગીત">
-            📖 વધુ શીખો
-          </a>
-          <button class="btn-favorite ${isFav ? 'active' : ''}" onclick="RhymeCards.toggleFav(${rhyme.id}, this)" title="મનપસંદ">
-            ${isFav ? '⭐' : '☆'}
+        </div>
+        <div class="storybook-title-pill-wrap">
+          <div class="storybook-title-pill" style="background: ${cardColor};">
+            ${rhyme.title}
+          </div>
+        </div>
+        <div class="storybook-body">
+          <p class="storybook-lyrics-snippet">${lyricsHtml}</p>
+          <button class="storybook-bottom-btn" style="background: ${cardColor};"
+                  onclick="RhymeCards.playVideo(${rhyme.id})" title="ઓડિયો અને ગીત સાંભળો">
+            📖 ${rhyme.title}
           </button>
         </div>
       </div>

@@ -7,6 +7,7 @@ const RHYMES_DATA = [
     category: "birds",
     categoryLabel: "પક્ષીઓ",
     video: "RHYMES/chaki ben chaki ben.mp4",
+    image: "assets/images/chaki_ben.jpg",
     preview: "ચકીબેન ચકીબેન,\nમારી સાથે રમવા આવશો કે નહીં?",
     fullLyrics: [
       "ચકીબેન ચકીબેન,",
@@ -51,6 +52,7 @@ const RHYMES_DATA = [
     category: "animals",
     categoryLabel: "પ્રાણીઓ",
     video: "RHYMES/Hathi bhai to jada.mp4",
+    image: "assets/images/hathi_bhai.jpg",
     preview: "હાથીભાઈ તો જાડા,\nચાલે કેવા વાંકા-ચૂંકા!",
     fullLyrics: [
       "હાથીભાઈ તો જાડા,",
@@ -93,6 +95,7 @@ const RHYMES_DATA = [
     category: "fun",
     categoryLabel: "મજેદાર",
     video: "RHYMES/Tametu-Re-Tametu.mp4",
+    image: "assets/images/tametu_re_tametu.jpg",
     preview: "ટામેટું રે ટામેટું,\nનદીએ નાહવા જાતું'તું.",
     fullLyrics: [
       "ટામેટું રે ટામેટું,",
@@ -135,6 +138,7 @@ const RHYMES_DATA = [
     category: "nature",
     categoryLabel: "પ્રકૃતિ",
     video: "RHYMES/aav re varsad.mp4",
+    image: "assets/images/aav_re_varsad.jpg",
     preview: "આવ રે વરસાદ,\nઘેબરિયો પરસાદ.",
     fullLyrics: [
       "આવ રે વરસાદ,",
@@ -177,6 +181,7 @@ const RHYMES_DATA = [
     category: "animals",
     categoryLabel: "પ્રાણીઓ",
     video: "RHYMES/ek biladi jadi.mp4",
+    image: "assets/images/ek_biladi_jadi.jpg",
     preview: "એક બિલાડી જાડી,\nતેણે પહેરી સાડી.",
     fullLyrics: [
       "એક બિલાડી જાડી,",
@@ -219,6 +224,7 @@ const RHYMES_DATA = [
     category: "fun",
     categoryLabel: "મજેદાર",
     video: "RHYMES/cycle mari sarara.mp4",
+    image: "assets/images/cycle_mari_sarara.jpg",
     preview: "સાઇકલ મારી સરરર જાય,\nટ્રીન ટ્રીન ઘંટડી વાગતી જાય.",
     fullLyrics: [
       "સાઇકલ મારી સરરર જાય,",
@@ -261,6 +267,7 @@ const RHYMES_DATA = [
     category: "animals",
     categoryLabel: "પ્રાણીઓ",
     video: "RHYMES/Be Sasla Ramta Ta.mp4",
+    image: "assets/images/be_sasla_ramta_ta.jpg",
     preview: "બે સસલાં રમતા'તા,\nગાજર-મૂળા ખાતા'તા.",
     fullLyrics: [
       "બે સસલાં રમતા'તા,",
@@ -303,6 +310,7 @@ const RHYMES_DATA = [
     category: "nature",
     categoryLabel: "પ્રકૃતિ",
     video: "RHYMES/aavo megh raja.mp4",
+    image: "assets/images/aavo_megh_raja.jpg",
     preview: "આવો મેઘરાજા,\nવગડાવો વાજાં!",
     fullLyrics: [
       "આવો મેઘરાજા,",
@@ -345,6 +353,7 @@ const RHYMES_DATA = [
     category: "fun",
     categoryLabel: "મજેદાર",
     video: "RHYMES/gadi gadi ramiye.mp4",
+    image: "assets/images/gadi_gadi_ramiye.jpg",
     preview: "ગાડી ગાડી રમીએ,\nછુક છુક ગાડી ચલાવીએ.",
     fullLyrics: [
       "ગાડી ગાડી રમીએ,",
@@ -387,6 +396,7 @@ const RHYMES_DATA = [
     category: "fun",
     categoryLabel: "મજેદાર",
     video: "RHYMES/be bava jata ta.mp4",
+    image: "assets/images/be_bava_jata_ta.jpg",
     preview: "બે બાવા જાતા'તા,\nચલમ-તપેલાં લાવ્યા'તા.",
     fullLyrics: [
       "બે બાવા જાતા'તા,",
@@ -429,6 +439,7 @@ const RHYMES_DATA = [
     category: "moral",
     categoryLabel: "નૈતિક",
     video: "RHYMES/varta re varta.mp4",
+    image: "assets/images/varta_re_varta.jpg",
     preview: "વાર્તા રે વાર્તા,\nભાભો ઢોર ચારતો.",
     fullLyrics: [
       "વાર્તા રે વાર્તા,",

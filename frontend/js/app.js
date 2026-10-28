@@ -4,13 +4,13 @@
 
 // ===== DEFAULT STATE =====
 const DEFAULT_STATE = {
-  stars: 0,
+  stars: 5,
   completedRhymes: [],
   favoriteRhymes: [],
   completedGames: {},
   badges: [],
   vocabularyCompleted: [],
-  streak: 0,
+  streak: 1,
   lastVisit: null,
   settings: { sound: true, darkMode: false, largeText: false }
 };

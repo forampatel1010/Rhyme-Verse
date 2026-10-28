@@ -278,40 +278,43 @@
 <nav class="navbar">
   <div class="container">
     <a href="index.html" class="logo">
-      <svg class="logo-icon" viewBox="0 0 40 40" fill="none">
-        <circle cx="20" cy="20" r="20" fill="url(#lg3)"/>
-        <text x="50%" y="56%" text-anchor="middle" dominant-baseline="middle" font-size="22" fill="white">♪</text>
-        <defs><linearGradient id="lg3" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
-          <stop stop-color="#87CEEB"/><stop offset="0.5" stop-color="#B39DDB"/><stop offset="1" stop-color="#F48FB1"/>
-        </linearGradient></defs>
-      </svg>
-      Rhymeverse
+      <span class="logo-star-icon">⭐</span>
+      <div class="logo-text-group">
+        <span class="logo-title">RhymeVerse</span>
+        <span class="logo-tagline">Little Words, Big Dreams!</span>
+      </div>
     </a>
     <ul class="nav-links">
-      <li><a href="index.html">🏠 મુખ્ય પાનું</a></li>
+      <li><a href="index.html">🏠 હોમ</a></li>
       <li><a href="rhymes.html" class="active">📖 બાળગીતો</a></li>
+      <li><a href="rhymes.html#stories">📖 વાર્તાઓ</a></li>
       <li><a href="games.html">🎮 રમતો</a></li>
-      <li><a href="rhymes.html#learn">✏️ શીખો</a></li>
-      <li><a href="progress.html">🌟 મારી પ્રગતિ</a></li>
+      <li><a href="rhymes.html#learn">💡 શિક્ષણ</a></li>
+      <li><a href="progress.html">✏️ મારી પ્રગતિ</a></li>
     </ul>
     <div class="nav-actions">
-      <div class="star-count">⭐ <span class="star-display-count">0</span></div>
+      <div class="star-count" title="તમારા મળેલા તારા">⭐ <span class="star-display-count">5</span></div>
       <button class="nav-btn" id="btn-sound" title="ધ્વનિ">🔊</button>
       <button class="nav-btn" id="btn-dark-mode" title="ડાર્ક મોડ">🌙</button>
+      <div class="nav-avatar-wrap" title="બાળક પ્રોફાઇલ">
+        <img src="assets/images/avatar_kid.jpg" alt="બાળક પ્રોફાઇલ" class="nav-avatar">
+      </div>
       <button class="hamburger" id="hamburger" aria-label="Menu">
         <span></span><span></span><span></span>
       </button>
     </div>
   </div>
 </nav>
+
 <div class="mobile-menu" id="mobile-menu">
   <div class="mobile-menu-panel">
     <button class="mobile-menu-close" id="mobile-menu-close">✕</button>
-    <a href="index.html">🏠 મુખ્ય પાનું</a>
+    <a href="index.html">🏠 હોમ</a>
     <a href="rhymes.html">📖 બાળગીતો</a>
+    <a href="rhymes.html#stories">📖 વાર્તાઓ</a>
     <a href="games.html">🎮 રમતો</a>
-    <a href="rhymes.html#learn">✏️ શીખો</a>
-    <a href="progress.html">🌟 મારી પ્રગતિ</a>
+    <a href="rhymes.html#learn">💡 શિક્ષણ</a>
+    <a href="progress.html">✏️ મારી પ્રગતિ</a>
   </div>
 </div>
 
@@ -440,13 +443,13 @@
   <div class="container">
     <div class="footer-grid">
       <div>
-        <div class="footer-logo">♪ Rhymeverse</div>
-        <p class="footer-desc">ગુજરાતી ભાષા અને સંસ્કૃતિ શીખવા માટેનું મઝેદાર, રંગીન, ઇન્ટ્રેક્ટિવ શૈક્ષણિક મંચ.</p>
+        <div class="footer-logo">⭐ RhymeVerse</div>
+        <p class="footer-desc">ગુજરાતી ભાષા અને બાળસાહિત્ય શીખવા માટેનું જાદુઈ, રંગીન, ઇન્ટરેક્ટિવ શૈક્ષણિક મંચ.</p>
       </div>
       <div>
         <div class="footer-heading">ઝડપી લિંક</div>
         <ul class="footer-links">
-          <li><a href="index.html">🏠 મુખ્ય પાનું</a></li>
+          <li><a href="index.html">🏠 હોમ</a></li>
           <li><a href="rhymes.html">📖 બાળગીતો</a></li>
           <li><a href="games.html">🎮 રમતો</a></li>
           <li><a href="progress.html">🌟 પ્રગતિ</a></li>
@@ -462,14 +465,14 @@
       </div>
     </div>
     <div class="footer-bottom">
-      &copy; 2024 Rhymeverse &mdash; ગુજરાતી શિક્ષણ | ♪ ગાઈએ, રમીએ, શીખીએ!
+      &copy; 2026 RhymeVerse &mdash; Little Words, Big Dreams! | ♪ ગાઈએ, રમીએ, શીખીએ!
     </div>
   </div>
 </footer>
 
-<script src="js/data.js?v=3"></script>
-<script src="js/app.js?v=3"></script>
-<script src="js/components.js?v=3"></script>
+<script src="js/data.js?v=6"></script>
+<script src="js/app.js?v=6"></script>
+<script src="js/components.js?v=6"></script>
 <script>
   const DetailPage = {
     rhyme: null,
