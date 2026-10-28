@@ -1470,70 +1470,136 @@ body.dark-mode .progress-bar-wrap {
   display: block;
 }
 
-/* Floating Character Stickers Layer */
-.floating-stickers-layer {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+/* =========================================================
+   STICKERS IN A ROW ON THE SIDES OF THE SCREEN
+   ========================================================= */
+.stickers-side-rail {
+  position: fixed;
+  top: 96px;
+  bottom: 24px;
+  width: 95px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
   pointer-events: none;
-  z-index: 5;
-  overflow: hidden;
+  z-index: 100;
+  transition: opacity 0.3s ease;
 }
-.floating-sticker {
-  position: absolute;
-  pointer-events: auto;
-  filter: drop-shadow(0 8px 18px rgba(0,0,0,0.12));
-  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-  cursor: pointer;
-}
-.floating-sticker:hover {
-  transform: scale(1.15) rotate(5deg);
-}
-.sticker-left-doraemon {
-  top: 90px;
-  left: 12px;
-  width: 84px;
-  animation: floatBob 3.6s ease-in-out infinite;
-}
-.sticker-left-bheem {
-  top: 310px;
+
+.rail-left {
   left: 14px;
-  width: 78px;
-  animation: floatBob 4.2s ease-in-out infinite 0.4s;
 }
-.sticker-right-hattori {
-  top: 85px;
+
+.rail-right {
   right: 14px;
-  width: 86px;
-  animation: floatBob 3.8s ease-in-out infinite 0.2s;
 }
-.sticker-right-pikachu {
-  top: 290px;
-  right: 16px;
-  width: 80px;
-  animation: floatBob 3.4s ease-in-out infinite 0.7s;
+
+.sticker-wrapper {
+  pointer-events: auto;
+  cursor: pointer;
+  position: relative;
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.35s ease;
+  user-select: none;
 }
-.sticker-right-tomjerry {
-  top: 480px;
-  right: 14px;
-  width: 86px;
-  animation: floatBob 4.4s ease-in-out infinite 1.1s;
+
+/* Authentic Die-Cut Vinyl Sticker Styling (Crisp white die-cut contour) */
+.diecut-sticker {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 0 1.5px #FFFFFF)
+          drop-shadow(0 0 3px #FFFFFF)
+          drop-shadow(0 0 5px rgba(255, 255, 255, 0.95))
+          drop-shadow(0 8px 18px rgba(0, 0, 0, 0.16));
+  transition: filter 0.35s ease;
 }
-.sticker-right-signpost {
-  top: 670px;
-  right: 16px;
-  width: 88px;
-  animation: floatBob 4.8s ease-in-out infinite 0.3s;
+
+/* Individual organic sticker tilts */
+.sticker-doraemon-wrap {
+  transform: rotate(-3deg);
+  max-width: 86px;
+  animation: stickerFloat 4s ease-in-out infinite;
 }
-@keyframes floatBob {
-  0%, 100% { transform: translateY(0px) rotate(0deg); }
-  50% { transform: translateY(-10px) rotate(2deg); }
+.sticker-bheem-wrap {
+  transform: rotate(4deg);
+  max-width: 80px;
+  animation: stickerFloat 4.4s ease-in-out infinite 0.6s;
 }
-@media (max-width: 1260px) {
-  .floating-stickers-layer {
-    display: none;
+.sticker-hattori-wrap {
+  transform: rotate(3deg);
+  max-width: 86px;
+  animation: stickerFloat 3.8s ease-in-out infinite 0.3s;
+}
+.sticker-pikachu-wrap {
+  transform: rotate(-4deg);
+  max-width: 82px;
+  animation: stickerFloat 4.2s ease-in-out infinite 0.9s;
+}
+.sticker-tomjerry-wrap {
+  transform: rotate(5deg);
+  max-width: 88px;
+  animation: stickerFloat 4.6s ease-in-out infinite 1.2s;
+}
+.sticker-signpost-wrap {
+  transform: rotate(-2deg);
+  max-width: 90px;
+  animation: stickerFloat 5s ease-in-out infinite 0.2s;
+}
+
+@keyframes stickerFloat {
+  0%, 100% { transform: translateY(0px) rotate(var(--rot, 0deg)); }
+  50% { transform: translateY(-8px) rotate(calc(var(--rot, 0deg) + 2deg)); }
+}
+
+.sticker-doraemon-wrap { --rot: -3deg; }
+.sticker-bheem-wrap { --rot: 4deg; }
+.sticker-hattori-wrap { --rot: 3deg; }
+.sticker-pikachu-wrap { --rot: -4deg; }
+.sticker-tomjerry-wrap { --rot: 5deg; }
+.sticker-signpost-wrap { --rot: -2deg; }
+
+/* Interactive Sticker Hover Peeling Effect */
+.sticker-wrapper:hover {
+  transform: scale(1.22) translateY(-8px) rotate(8deg) !important;
+  z-index: 120;
+}
+.sticker-wrapper:hover .diecut-sticker {
+  filter: drop-shadow(0 0 2px #FFFFFF)
+          drop-shadow(0 0 6px #FFE082)
+          drop-shadow(0 0 10px rgba(255, 224, 130, 0.85))
+          drop-shadow(0 14px 28px rgba(0, 0, 0, 0.24));
+}
+
+.sticker-wrapper:active {
+  transform: scale(0.95) rotate(0deg) !important;
+}
+
+@media (min-width: 1400px) {
+  .container {
+    max-width: 1180px;
+    padding: 0 20px;
+  }
+}
+@media (min-width: 1200px) and (max-width: 1399px) {
+  .container {
+    max-width: 980px;
+    padding: 0 16px;
+  }
+  .stickers-side-rail {
+    width: 80px;
+  }
+  .rail-left { left: 8px; }
+  .rail-right { right: 8px; }
+  .sticker-wrapper {
+    max-width: 72px;
+  }
+}
+@media (max-width: 1199px) {
+  /* On tablets and mobile, hide side sticker rails so they never block content */
+  .stickers-side-rail {
+    display: none !important;
   }
 }
 

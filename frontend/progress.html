@@ -7,12 +7,37 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Gujarati:wght@400;500;600;700;800;900&family=Noto+Serif+Gujarati:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/main.css?v=6">
-  <link rel="stylesheet" href="css/animations.css?v=6">
-  <link rel="stylesheet" href="css/components.css?v=6">
-  <link rel="stylesheet" href="css/responsive.css?v=6">
+  <link rel="stylesheet" href="css/main.css?v=7">
+  <link rel="stylesheet" href="css/animations.css?v=7">
+  <link rel="stylesheet" href="css/components.css?v=7">
+  <link rel="stylesheet" href="css/responsive.css?v=7">
 </head>
 <body id="progress-page">
+
+<!-- STICKERS IN A ROW ON THE SIDES OF THE SCREEN -->
+<aside class="stickers-side-rail rail-left" aria-label="ડાબી બાજુના સ્ટીકર્સ">
+  <div class="sticker-wrapper sticker-doraemon-wrap" onclick="App.celebrate()" title="ડોરેમોન">
+    <img src="assets/images/sticker_doraemon.png" alt="ડોરેમોન સ્ટીકર" class="diecut-sticker">
+  </div>
+  <div class="sticker-wrapper sticker-bheem-wrap" onclick="App.celebrate()" title="છોટા ભીમ">
+    <img src="assets/images/sticker_bheem.png" alt="છોટા ભીમ સ્ટીકર" class="diecut-sticker">
+  </div>
+</aside>
+
+<aside class="stickers-side-rail rail-right" aria-label="જમણી બાજુના સ્ટીકર્સ">
+  <div class="sticker-wrapper sticker-hattori-wrap" onclick="App.celebrate()" title="હાતોરી">
+    <img src="assets/images/sticker_hattori.png" alt="હાતોરી સ્ટીકર" class="diecut-sticker">
+  </div>
+  <div class="sticker-wrapper sticker-pikachu-wrap" onclick="App.celebrate()" title="પીકાચૂ">
+    <img src="assets/images/sticker_pikachu.png" alt="પીકાચૂ સ્ટીકર" class="diecut-sticker">
+  </div>
+  <div class="sticker-wrapper sticker-tomjerry-wrap" onclick="App.celebrate()" title="ટોમ અને જેરી">
+    <img src="assets/images/sticker_tom_jerry.png" alt="ટોમ અને જેરી સ્ટીકર" class="diecut-sticker">
+  </div>
+  <div class="sticker-wrapper sticker-signpost-wrap" onclick="App.celebrate()" title="Read Play Learn Grow">
+    <img src="assets/images/sticker_signpost.png" alt="સાઇનપોસ્ટ સ્ટીકર" class="diecut-sticker">
+  </div>
+</aside>
 
 <!-- NAVIGATION -->
 <nav class="navbar">
@@ -231,10 +256,10 @@
   </div>
 </footer>
 
-<script src="js/data.js?v=6"></script>
-<script src="js/app.js?v=6"></script>
-<script src="js/components.js?v=6"></script>
-<script src="js/progress.js?v=6"></script>
+<script src="js/data.js?v=7"></script>
+<script src="js/app.js?v=7"></script>
+<script src="js/components.js?v=7"></script>
+<script src="js/progress.js?v=7"></script>
 <script>
   function toggleDarkMode() {
     const on = App.toggleDarkMode();
